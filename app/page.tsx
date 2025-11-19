@@ -227,7 +227,7 @@ export default function ExpoDoc() {
                 View Components
               </a>
               <a
-                href="/"
+                href="https://bawang-capstone.netlify.app"
                 className="border border-[#AD769F]/40 text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#893B67]/30 transition-all"
               >
                 Live Dashboard
@@ -252,8 +252,79 @@ export default function ExpoDoc() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* PCB Image with Hotspots */}
+          <div className="grid lg:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+            {/* Left Component List */}
+            <div className="space-y-4">
+              {components.slice(0, 4).map((comp, index) => (
+                <div
+                  key={comp.id}
+                  className={`bg-[#3B192B]/70 border rounded-xl p-4 transition-all duration-300 cursor-pointer ${
+                    activeComponent === comp.id
+                      ? "border-2 shadow-lg scale-105"
+                      : "border-[#893B67]/40 hover:border-[#AD769F]/40"
+                  }`}
+                  style={{
+                    borderColor:
+                      activeComponent === comp.id ? comp.color : undefined,
+                    boxShadow:
+                      activeComponent === comp.id
+                        ? `0 0 30px ${comp.color}40`
+                        : undefined,
+                  }}
+                  onMouseEnter={() => setActiveComponent(comp.id)}
+                  onMouseLeave={() => setActiveComponent(null)}
+                >
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-sm"
+                      style={{
+                        backgroundColor: `${comp.color}40`,
+                        color: comp.color,
+                      }}
+                    >
+                      {index + 1}
+                    </div>
+                    <div className="flex-1">
+                      <h3
+                        className="text-lg font-bold mb-1"
+                        style={{ color: comp.color }}
+                      >
+                        {comp.name}
+                      </h3>
+                      <p className="text-white/70 text-xs mb-2">
+                        {comp.description}
+                      </p>
+                      <div className="space-y-1">
+                        {comp.specs.map((spec, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center gap-1 text-xs text-white/60"
+                          >
+                            <svg
+                              className="w-3 h-3 flex-shrink-0"
+                              style={{ color: comp.color }}
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            {spec}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Center: PCB Image with Hotspots */}
             <div className="sticky top-24">
               <div className="relative bg-[#3B192B]/50 border border-[#AD769F]/30 rounded-2xl p-8">
                 <img
@@ -292,12 +363,12 @@ export default function ExpoDoc() {
               </div>
             </div>
 
-            {/* Component List */}
+            {/* Right Component List */}
             <div className="space-y-4">
-              {components.map((comp, index) => (
+              {components.slice(4, 8).map((comp, index) => (
                 <div
                   key={comp.id}
-                  className={`bg-[#3B192B]/70 border rounded-xl p-6 transition-all duration-300 cursor-pointer ${
+                  className={`bg-[#3B192B]/70 border rounded-xl p-4 transition-all duration-300 cursor-pointer ${
                     activeComponent === comp.id
                       ? "border-2 shadow-lg scale-105"
                       : "border-[#893B67]/40 hover:border-[#AD769F]/40"
@@ -313,34 +384,34 @@ export default function ExpoDoc() {
                   onMouseEnter={() => setActiveComponent(comp.id)}
                   onMouseLeave={() => setActiveComponent(null)}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3">
                     <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0"
+                      className="w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-sm"
                       style={{
                         backgroundColor: `${comp.color}40`,
                         color: comp.color,
                       }}
                     >
-                      {index + 1}
+                      {index + 5}
                     </div>
                     <div className="flex-1">
                       <h3
-                        className="text-xl font-bold mb-2"
+                        className="text-lg font-bold mb-1"
                         style={{ color: comp.color }}
                       >
                         {comp.name}
                       </h3>
-                      <p className="text-white/80 text-sm mb-3">
+                      <p className="text-white/70 text-xs mb-2">
                         {comp.description}
                       </p>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="space-y-1">
                         {comp.specs.map((spec, i) => (
                           <div
                             key={i}
-                            className="flex items-center gap-2 text-xs text-white/70"
+                            className="flex items-center gap-1 text-xs text-white/60"
                           >
                             <svg
-                              className="w-4 h-4 flex-shrink-0"
+                              className="w-3 h-3 flex-shrink-0"
                               style={{ color: comp.color }}
                               fill="none"
                               stroke="currentColor"
@@ -465,7 +536,7 @@ export default function ExpoDoc() {
               GitHub Repository
             </a>
             <span className="text-[#893B67]">|</span>
-            <a href="/" className="hover:text-[#AD769F] transition-colors">
+            <a href="https://bawang-capstone.netlify.app" className="hover:text-[#AD769F] transition-colors">
               Live Dashboard
             </a>
             <span className="text-[#893B67]">|</span>
