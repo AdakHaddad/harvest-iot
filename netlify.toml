@@ -4,7 +4,7 @@
 
 [context.production.environment]
   # request a Node version; Netlify will use engines if present but setting here helps
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
 
   # optional: try forcing WASM fallback (see alternative below)
   # LIGHTNING_CSS_USE_WASM = "1"
