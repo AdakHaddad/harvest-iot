@@ -1,0 +1,7 @@
+change the color palette as
+AD769F
+7CA765
+FFFFFF
+893B67
+3B192B
+wanna add asset on public/ to show the component detail and its description
